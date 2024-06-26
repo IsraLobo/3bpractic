@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Product</title>
+</head>
+<body>
+	{% if alert %}
+	<script>alert("{{ alert }}");</script>
+	{% endif %}
+
+	<div class="body"></div>
+	<div class="grad"></div>
+	<h2>Productos</h2>
+
+	<div>
+		<form action="/products/{{ usuario }}/2/" method="post">
+			{% csrf_token %}
+			<label for="fname">Codigo:</label><input type="number" placeholder="Codigo" name="codigo" required="required"><br><br>
+			<label for="fname">Producto:</label><input type="text" placeholder="Producto" name="producto" required="required"><br><br>
+			<label for="fname">Stock:</label><input type="number" placeholder="100" name="stock" readonly="readonly"><br><br>
+			<input type="submit" value="Guardar Producto"><br><br>
+		</form>
+	</div>
+
+</body>
+</html>

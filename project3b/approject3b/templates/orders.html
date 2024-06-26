@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Orders</title>
+</head>
+<body>
+	{% if alert %}
+	<script>alert("{{ alert }}");</script>
+	{% endif %}
+
+	<div class="body"></div>
+	<div class="grad"></div>
+	<h2>Compra</h2>
+
+	<div>
+		<form action="/orders/{{ usuario }}/2/" method="post">
+			<!--patch-->
+			{% csrf_token %}
+			<label for="fname">Codigo del Producto:</label><input type="number" placeholder="Codigo" name="codigo" required="required"><br><br>
+			<label for="fname">Cantidad:</label><input type="number" placeholder="Cantidad" name="stock" required="required"><br><br>
+			<input type="submit" value="Comprar"><br><br>
+		</form>
+	</div>
+
+</body>
+</html>

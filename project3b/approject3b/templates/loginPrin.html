@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Login IPR</title>
+</head>
+<body>
+	{% if alert %}
+	<script>alert("{{ alert }}");</script>
+	{% endif %}
+	<div class="body"></div>
+	<div class="grad"></div>
+	<h2>LOGIN</h2>
+
+	<div class="login">
+		<form action="/home/" method="post">
+			{% csrf_token %}
+			<input type="text" placeholder="username" name="username" required="required"><br><br>
+			<input type="password" placeholder="password" name="password" required="required"><br><br>
+			<input type="submit" value="Entrar"><br><br>
+		</form>
+	</div>
+	<ul>
+		<li><a href="/registro/">Registrar</a></li>
+	</ul>
+</body>
+</html>

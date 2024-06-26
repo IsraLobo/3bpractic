@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Home</title>
+</head>
+<body>
+	{% if alert %}
+	<script>alert("{{ alert }}");</script>
+	{% endif %}
+
+	<div class="body"></div>
+	<div class="grad"></div>
+	<h2>Inicio</h2>
+	<div>
+		<form action="" method="post">
+			{% csrf_token %}
+			<ul>
+				<li><a href="/products/{{ usuario }}/1/">Productos</a></li>
+				<li><a href="/inventories/{{ usuario }}/1/">Inventarios</a></li>
+				<li><a href="/orders/{{ usuario }}/1/">Pedidos</a></li>
+				<li><a href="/history/{{ usuario }}/">Almacen</a></li>
+				<li><a href="/historyOrders/{{ usuario }}/">Historial de Compras</a></li>
+				<li><a href="/logout/">Salir</a></li>
+			</ul>
+		</form>
+	</div>
+
+	{% if history %}
+	<div class="col-lg-4 offset-lg-4">
+		<table>
+			<tr>
+				<th>Codigo</th>
+				<th>Producto</th>
+				<th>Usuario Alta</th>
+				<th>Id Usuario</th>
+				<th>Stock</th>
+			</tr>
+			{% for c in history %}
+			<tr>
+				<td align="center">{{c.sku_product}}</td>
+				<td align="center">{{c.name_product}}</td>
+				<td align="center">{{c.user_save}}</td>
+				<td align="center">{{c.id_user}}</td>
+				<td align="center">{{c.stock_product}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+	</div>
+	{% endif %}
+
+
+	{% if historyorder %}
+	<div class="col-lg-4 offset-lg-4">
+		<table>
+			<tr>
+				<th>Codigo</th>
+				<th>Producto</th>
+				<th>Usuario Compra</th>
+				<th>Id Usuario</th>
+				<th>Fecha</th>
+				<th>Cantidad de Piezas</th>
+			</tr>
+			{% for c in historyorder %}
+			<tr>
+				<td align="center">{{c.idproduct}}</td>
+				<td align="center">{{c.productname}}</td>
+				<td align="center">{{c.userproduct}}</td>
+				<td align="center">{{c.userid}}</td>
+				<td align="center">{{c.fecha_order}}</td>
+				<td align="center">{{c.cant_order}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+	</div>
+	{% endif %}
+
+
+</body>
+</html>
+
+
+<!--<td align="center"><a href="">{{c.sku_product}}</a></td>-->
